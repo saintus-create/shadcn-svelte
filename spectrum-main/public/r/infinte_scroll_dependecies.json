@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "infinte_scroll_dependecies",
+  "type": "registry:ui",
+  "title": "Infinite Scroll Dependencies",
+  "description": "component for the Infinite Scroll Dependencies",
+  "files": [
+    {
+      "path": "app/registry/spectrumui/infinite-scroll-dependecies.tsx",
+      "content": "import * as React from 'react';\r\n\r\ninterface InfiniteScrollProps {\r\n  isLoading: boolean;\r\n  hasMore: boolean;\r\n  next: () => unknown;\r\n  threshold?: number;\r\n  root?: Element | Document | null;\r\n  rootMargin?: string;\r\n  reverse?: boolean;\r\n  children?: React.ReactNode;\r\n}\r\n\r\nexport default function InfiniteScroll({\r\n  isLoading,\r\n  hasMore,\r\n  next,\r\n  threshold = 1,\r\n  root = null,\r\n  rootMargin = '0px',\r\n  reverse,\r\n  children,\r\n}: InfiniteScrollProps) {\r\n  const observer = React.useRef<IntersectionObserver>();\r\n  // This callback ref will be called when it is dispatched to an element or detached from an element,\r\n  // or when the callback function changes.\r\n  const observerRef = React.useCallback(\r\n    (element: HTMLElement | null) => {\r\n      let safeThreshold = threshold;\r\n      if (threshold < 0 || threshold > 1) {\r\n        
+      "type": "registry:ui",
+      "target": "components/spectrumui/infinite-scroll-dependecies.tsx"
+    }
+  ]
+}
