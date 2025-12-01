@@ -114,3 +114,7 @@ registry-template/static/r
 repro/src/lib/hooks
 repro/src/lib/components/ui
 !repro/src/lib/components/ui/light-switch
+
+# Exclude external projects and temporary directories
+spectrum-main/
+scratch/
