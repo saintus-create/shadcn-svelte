@@ -39,6 +39,11 @@ function generateGetStartedNav(): SidebarNavItem[] {
 			items: [],
 		},
 		{
+			title: "Critical Theory",
+			href: "/docs/critical-theory",
+			items: [],
+		},
+		{
 			title: "Installation",
 			href: "/docs/installation",
 			items: [],

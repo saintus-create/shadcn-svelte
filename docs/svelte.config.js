@@ -1,6 +1,6 @@
 // @ts-check
 import { mdsx } from "mdsx";
-import adapter from "@sveltejs/adapter-cloudflare";
+import adapter from "@sveltejs/adapter-vercel";
 import MagicString from "magic-string";
 import { mdsxConfig } from "./mdsx.config.js";
 
@@ -10,7 +10,6 @@ const config = {
 	extensions: [".svelte", ".md"],
 
 	kit: {
-		// https://kit.svelte.dev/docs/adapter-cloudflare#options
 		adapter: adapter(),
 		prerender: {
 			handleMissingId: (details) => {

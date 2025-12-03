@@ -135,18 +135,24 @@
 		{#snippet child({ props })}
 			<Button
 				{...props}
-				variant="secondary"
-				class={cn(
-					"bg-surface text-surface-foreground/60 dark:bg-card relative h-8 w-full justify-start ps-2.5 font-normal shadow-none sm:pe-12 md:w-40 lg:w-56 xl:w-64"
-				)}
+				variant="ghost"
+				size="icon"
+				class="size-8"
 				onclick={() => (open = true)}
+				title="Search documentation..."
 			>
-				<span class="hidden lg:inline-flex">Search documentation...</span>
-				<span class="inline-flex lg:hidden">Search...</span>
-				<div class="absolute end-1.5 top-1.5 hidden gap-1 sm:flex">
-					{@render CommandMenuKbd({ content: isMac.current ? "⌘" : "Ctrl" })}
-					{@render CommandMenuKbd({ content: "K", class: "aspect-square" })}
-				</div>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="18"
+					height="18"
+					viewBox="0 0 256 256"
+					fill="currentColor"
+					class="size-4.5"
+				>
+					<path
+						d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+					/>
+				</svg>
 			</Button>
 		{/snippet}
 	</Dialog.Trigger>

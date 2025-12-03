@@ -24,8 +24,11 @@
 @theme inline {
 	--breakpoint-3xl: 1600px;
 	--breakpoint-4xl: 2000px;
-	--font-sans: "Geist", sans-serif;
-	--font-mono: "Geist Mono", monospace;
+	/* SF Pro / System Fonts */
+	--font-sans: "SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	--font-display: "SF Pro Display", "SF Pro", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+	--font-compact: "SF Compact", "SF Compact Text", -apple-system, sans-serif;
+	--font-mono: "SF Mono", "Geist Mono", monospace;
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
@@ -91,11 +94,11 @@
 	--border: oklch(0.922 0 0);
 	--input: oklch(0.922 0 0);
 	--ring: oklch(0.708 0 0);
-	--chart-1: var(--color-blue-300);
-	--chart-2: var(--color-blue-500);
-	--chart-3: var(--color-blue-600);
-	--chart-4: var(--color-blue-700);
-	--chart-5: var(--color-blue-800);
+	--chart-1: oklch(0.646 0.222 41.116);
+	--chart-2: oklch(0.6 0.118 184.704);
+	--chart-3: oklch(0.398 0.07 227.392);
+	--chart-4: oklch(0.828 0.189 84.429);
+	--chart-5: oklch(0.769 0.188 70.08);
 	--sidebar: oklch(0.985 0 0);
 	--sidebar-foreground: oklch(0.145 0 0);
 	--sidebar-primary: oklch(0.205 0 0);
@@ -119,7 +122,7 @@
 	--foreground: oklch(0.985 0 0);
 	--card: oklch(0.205 0 0);
 	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.269 0 0);
+	--popover: oklch(0.205 0 0);
 	--popover-foreground: oklch(0.985 0 0);
 	--primary: oklch(0.922 0 0);
 	--primary-foreground: oklch(0.205 0 0);
@@ -127,17 +130,17 @@
 	--secondary-foreground: oklch(0.985 0 0);
 	--muted: oklch(0.269 0 0);
 	--muted-foreground: oklch(0.708 0 0);
-	--accent: oklch(0.371 0 0);
+	--accent: oklch(0.269 0 0);
 	--accent-foreground: oklch(0.985 0 0);
 	--destructive: oklch(0.704 0.191 22.216);
 	--border: oklch(1 0 0 / 10%);
 	--input: oklch(1 0 0 / 15%);
 	--ring: oklch(0.556 0 0);
-	--chart-1: var(--color-blue-300);
-	--chart-2: var(--color-blue-500);
-	--chart-3: var(--color-blue-600);
-	--chart-4: var(--color-blue-700);
-	--chart-5: var(--color-blue-800);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
 	--sidebar: oklch(0.205 0 0);
 	--sidebar-foreground: oklch(0.985 0 0);
 	--sidebar-primary: oklch(0.488 0.243 264.376);
@@ -145,7 +148,7 @@
 	--sidebar-accent: oklch(0.269 0 0);
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.439 0 0);
+	--sidebar-ring: oklch(0.556 0 0);
 	--surface: oklch(0.2 0 0);
 	--surface-foreground: oklch(0.708 0 0);
 	--code: var(--surface);
@@ -172,6 +175,59 @@
 	body {
 		font-synthesis-weight: none;
 		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-family: var(--font-sans);
+	}
+
+	/* macOS-style scrollbar */
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: transparent transparent;
+	}
+
+	*:hover {
+		scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+	}
+
+	::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: transparent;
+		border-radius: 4px;
+	}
+
+	:hover::-webkit-scrollbar-thumb {
+		background: rgba(0, 0, 0, 0.2);
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: rgba(0, 0, 0, 0.3);
+	}
+
+	.dark :hover::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.2);
+	}
+
+	.dark ::-webkit-scrollbar-thumb:hover {
+		background: rgba(255, 255, 255, 0.3);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+		letter-spacing: -0.022em;
 	}
 
 	@supports (font: -apple-system-body) and (-webkit-appearance: none) {
@@ -184,6 +240,16 @@
 	button:active {
 		@apply opacity-60 md:opacity-100;
 	}
+}
+
+@utility font-apple-display {
+	font-family: var(--font-display);
+	letter-spacing: -0.022em;
+}
+
+@utility font-apple-text {
+	font-family: var(--font-sans);
+	letter-spacing: -0.011em;
 }
 
 @utility border-grid {
@@ -241,15 +307,15 @@
 			@apply !mt-0;
 		}
 
-		&:first-child > *[aria-level="3"]:first-child {
+		&:first-child>*[aria-level="3"]:first-child {
 			@apply !mt-0;
 		}
 
-		> *[aria-level="3"] {
+		>*[aria-level="3"] {
 			@apply !mt-16;
 		}
 
-		> *[aria-level="3"] + p {
+		>*[aria-level="3"]+p {
 			@apply !mt-2;
 		}
 	}
@@ -394,5 +460,15 @@
 
 	.super-debug--code .boolean {
 		color: #fff8 !important;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+
+	body {
+		@apply bg-background text-foreground;
 	}
 }
